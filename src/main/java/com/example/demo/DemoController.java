@@ -17,8 +17,8 @@ public class DemoController {
     @GetMapping(value = "/salary/{employee}")
     public String getSalary(@PathVariable(name = "employee") String employeeType) {
         /**
-             here based on the emptype it has to choose appropriate employee like manager clerk ,hr
-            and then call appropriate class salary method
+             Here based on the emptype it has to choose appropriate employee like manager developer ,tester
+             then call appropriate class salary method
         **/
         
         Optional<Employee> emp = employeeList.stream().filter(e -> e.getType().equalsIgnoreCase(employeeType)).findAny();
