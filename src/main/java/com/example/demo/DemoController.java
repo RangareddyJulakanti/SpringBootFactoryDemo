@@ -16,16 +16,8 @@ public class DemoController {
 
     @GetMapping(value = "/salary/{employee}")
     public String getSalary(@PathVariable(name = "employee") String employeeType) {
-        for(Employee e:employeeList){
-            if(e.getType().equalsIgnoreCase(employeeType)){
-                return e.salary();
-            }
-        }
-       /* Optional<Employee> emp = employeeList.stream().filter(e -> e.getType().equalsIgnoreCase(employeeType)).findAny();
-        return emp.isPresent()
-                ? emp.get().salary()
-                : "Not found emptype";*/
-       return "Not found emptype";
-
+      
+       Optional<Employee> emp = employeeList.stream().filter(e -> e.getType().equalsIgnoreCase(employeeType)).findAny();
+        return emp.isPresent() ? emp.get().salary(): "Not found emptype";
     }
 }
